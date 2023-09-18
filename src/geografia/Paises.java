@@ -1,5 +1,8 @@
 package geografia;
 
+import java.text.Collator;
+import java.text.Normalizer;
+import java.text.Normalizer.Form;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -249,9 +252,22 @@ public class Paises {
 		return todosOsPaises;
 	}
 
+    
+    
     public Optional<Pais> acharPais(String nomePais) {
         for (Pais paisEncontrado : todosOsPaises) {
-            if (paisEncontrado.getNome().equalsIgnoreCase(nomePais)) {
+            Collator collator = Collator.getInstance();
+            collator.setStrength(Collator.PRIMARY);
+
+            // Remova acentos e transforme em letras minúsculas antes de comparar
+            String nomePaisSemAcentos = Normalizer.normalize(paisEncontrado.getNome(), Form.NFD)
+                    .replaceAll("[^\\p{ASCII}]", "")
+                    .toLowerCase();
+            String nomePaisInputSemAcentos = Normalizer.normalize(nomePais, Form.NFD)
+                    .replaceAll("[^\\p{ASCII}]", "")
+                    .toLowerCase();
+
+            if (collator.compare(nomePaisSemAcentos, nomePaisInputSemAcentos) == 0) {
                 return Optional.of(paisEncontrado);
             }
         }

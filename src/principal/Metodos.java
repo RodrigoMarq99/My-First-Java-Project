@@ -22,7 +22,7 @@ public class Metodos {
 		System.out.println(
 				"\nPara maior conforto, você deseja alterar a cor do terminal? Digite sim para alterar ou outra coisa para continuar.");
 		v.mudarCor = leitura.nextLine();
-
+		
 		if (v.mudarCor.equalsIgnoreCase("sim")) {
 			System.out.println("Qual cor de fonte você deseja?\n1 - Preto | 2 - Amarelo | 3 - Vermelho |"
 					+ " 4 - Verde | 5 - Azul | 6 - Roxo");
@@ -131,7 +131,7 @@ public class Metodos {
 
 		v.nome = leitura.nextLine();
 
-		System.out.println("Olá " + v.nome + ", pode me chamar de 'Amigo Curioso'.");
+		System.out.println("\nOlá " + v.nome + ", pode me chamar de 'Amigo Curioso'.");
 
 		if (ativador == true) {
 			menu3();
@@ -139,8 +139,10 @@ public class Metodos {
 	}
 
 	public static void menu3() {
-		System.out.println("\nVAMOS INICIAR!\n\n" + "Você deseja conhecer mais sobre:"
-				+ "\n1 - Geografia | 2 - História | 3 - Astronomia\n                  ou\n 4 - Reiniciar o programa | 5 - Sair");
+		System.out.println("---------------------------------------" +
+						 "\nVAMOS INICIAR!\n\n" +
+						 "Você deseja conhecer mais sobre:" + 
+						 "\n1 - Geografia | 2 - História | 3 - Astronomia\n4 - Reiniciar o programa | 5 - Sair\n" + "---------------------------------------");
 
 		try {
 			do {
@@ -156,7 +158,7 @@ public class Metodos {
 					Historia his = new Historia();
 					his.comecar();
 				} else if (v.opcao == 3) {
-					System.out.println("Você gosta de aprender sobre o passado né?! Vamos lá então " + v.nome + ".");
+					System.out.println("Eu também amo curiosidades sobre o espaço! Eu estou com você, " + v.nome + ".");
 					Astronomia ast = new Astronomia();
 					ast.comecar();
 				} else if (v.opcao == 4) {
